@@ -1,8 +1,8 @@
 $(document).ready(function() {
 	var counter;
 	var startBreak;
-	var workTime = parseInt($("#time25").html());
-	var breakTime = parseInt($("#time5").html());
+	var workTime = parseInt($("#work").html());
+	var breakTime = parseInt($("#break").html());
 	var countdown = parseInt($("#countTime").html());
 	var countdownBrake = parseInt($("countTime").html());
 
@@ -42,6 +42,44 @@ $(document).ready(function() {
 				}
 			}
 		}
+	});
+
+	$("#workMinus").click(function() {
+	if(workTime > 1) {
+		workTime -= 1;
+		$("#work").html(workTime);
+		$("#countTime").html(workTime);
+	} else {
+		alert("You can't go lower than 1 minute!! Try again!!");
+	}
+	});
+
+	$("#workPlus").click(function() {
+	if(workTime < 60) {
+		workTime += 1;
+		$("#work").html(workTime);
+		$("#countTime").html(workTime);
+	} else {
+		alert("You can't go higher than 1 hour!! Try again!!");
+	}
+	});
+
+	$("#breakMinus").click(function() {
+	if(breakTime > 1) {
+		breakTime -= 1;
+		$("#break").html(breakTime);
+	} else {
+		alert("You can't go lower than a 1 minute break!! Try again!!");
+	}
+	});
+
+	$("#breakPlus").click(function() {
+	if(breakTime < 15) {
+		breakTime += 1;
+		$("#break").html(breakTime);
+	} else {
+		alert("You can't go higher than a 15 minute break!! Try again!!");
+	}
 	});
 
 	$("#resetBtn").click(function() {

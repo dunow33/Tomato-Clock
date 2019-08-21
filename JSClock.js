@@ -4,7 +4,7 @@ $(document).ready(function() {
 	var workTime = parseInt($("#work").html());
 	var breakTime = parseInt($("#break").html());
 	var countdown = parseInt($("#countTime").html());
-	var countdownBrake = parseInt($("countTime").html());
+	var countdownBreak = parseInt($("countTime").html());
 
 	$("#startBtn").click(function() {
 		$("#startBtn").hide();
@@ -19,7 +19,7 @@ $(document).ready(function() {
 			if(countdown === 0) {
 				clearInterval(counter);
 				startBreak = setInterval(breakTimer, 1000);
-				countdownBrake = breakTime *= 60;
+				countdownBreak = breakTime *= 60;
 			}
 			if(countdown % 60 >= 10) {
 				$('#countTime').html(Math.floor(countdown / 60) + ":" + countdown % 60);
@@ -29,16 +29,16 @@ $(document).ready(function() {
 
 			function breakTimer() {
 				$("#sessionTime").html("Break Time:");
-				countdownBrake -= 1;
-				if(countdownBrake === 0) {
+				countdownBreak -= 1;
+				if(countdownBreak === 0) {
 					clearInterval(startBreak);
 					$("#sessionTime").html("Time is up!! <br />Start new session!!");
 					$("#resetBtn").html("Reset");
 				}
-				if(countdownBrake % 60 >= 10) {
-					$('#countTime').html(Math.floor(countdown / 60) + ":" + countdown % 60);
+				if(countdownBreak % 60 >= 10) {
+					$('#countTime').html(Math.floor(countdownBreak / 60) + ":" + countdownBreak % 60);
 				} else {
-					$('#countTime').html(Math.floor(countdown / 60) + ":0" + countdown % 60);
+					$('#countTime').html(Math.floor(countdownBreak / 60) + ":0" + countdownBreak % 60);
 				}
 			}
 		}
@@ -86,6 +86,12 @@ $(document).ready(function() {
 		workTime = 25;
 		breakTime = 5;
 		clearInterval(counter);
+		clearInterval(startBreak);
 		$('#countTime').html(workTime);
+		$('#work').html(workTime);
+		$('#break').html(breakTime);
+		$("#startBtn").show();
+		$("#resetBtn").html("Reset");
+		$("#sessionTime").html("Session Time:");
 	});
 });

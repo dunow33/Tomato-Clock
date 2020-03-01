@@ -8,7 +8,7 @@ $(document).ready(function() {
 
 	$("#startBtn").click(function() {
 		$("#startBtn").hide();
-		$("#resetBtn").html("Stop");
+		$("#resetBtn").html("Stop <i class='fa fa-stop'></i>");
 
 		counter = setInterval(timer, 1000);
 		countdown = workTime *= 60;
